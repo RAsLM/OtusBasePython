@@ -36,18 +36,17 @@ def filter_numbers(numbers_list: list[int], odd_or_even_or_ptime: str) -> list:
     >>> filter_numbers([2, 3, 4, 5], EVEN)
     <<< [2, 4]
     """
-    def is_prime(number: int) -> bool:
+    def is_prime(a: int) -> bool:
         # делитель
         d = 2
-        prime_or_not = False
-        while d * d <= number and number % number != 0:
-            prime_or_not = True
-        return prime_or_not
-    numbers_list_for_return = []
+        while d * d <= a and a % d != 0:
+            d += 2
+        return d * d > number
+    numbers_list_for_return: list[int] = []
     if odd_or_even_or_ptime == PRIME:
         for number in numbers_list:
             if is_prime(number):
-                numbers_list_for_return(number)
+                numbers_list_for_return.append(number)
     if odd_or_even_or_ptime == ODD:
         for number in numbers_list:
             if number % 2 != 0:
